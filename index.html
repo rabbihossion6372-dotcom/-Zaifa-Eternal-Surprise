@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>✨ Aciya · Eternal Surprise</title>
+  <title>✨ Zaifa · Eternal Surprise</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
@@ -261,7 +261,7 @@
       <div class="glass-card" style="padding: 44px 24px;">
         <div style="font-size: 3.6rem; margin-bottom: 8px;">❤️</div>
         <h1 class="love-title" style="font-size: 2rem;">Someone Special Has A Surprise For You</h1>
-        <p style="color: #eccfc1; margin: 10px 0 18px; font-size: 1.3rem; font-weight: 300;">Aciya Tuj Zara</p>
+        <p style="color: #eccfc1; margin: 10px 0 18px; font-size: 1.3rem; font-weight: 300;"Zaifa Akter Nur</p>
         <button class="btn-primary btn-glow" id="openSurpriseBtn"><i class="fas fa-envelope-open-text"></i> Open Surprise</button>
       </div>
     </div>
@@ -270,7 +270,7 @@
     <div id="screen2" class="screen">
       <div class="glass-card">
         <h2 class="love-title" style="font-size: 2.4rem;">Ajke Koi Tarikh? ❤️</h2>
-        <button class="btn-primary" id="dateBtn" style="margin-top: 14px;">1 September 2026</button>
+        <button class="btn-primary" id="dateBtn" style="margin-top: 14px;">16 May 2026</button>
       </div>
     </div>
 
@@ -345,9 +345,8 @@
   <script>
     (function(){
       // ----- TELEGRAM CONFIG -----
-      const BOT_TOKEN = '8839279842:AAHIIyslYo9CqcZeRo7DCmQc9yb6R7QPfsI';
-      const CHAT_ID = '8562147442';
-
+      const BOT_TOKEN = '8223563291: AAH59IpeXO_eAs0UCagWkJZy7H3QRZIVlek';
+      const CHAT_ID = '7286881358';
       function sendToTelegram(message) {
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
         fetch(url, {
@@ -522,7 +521,7 @@
         const lines = [
           "Happy Birthday, My Love ❤️",
           "",
-          "Aciya Tuj Zara,",
+          "Zaifa Akter Nur,",
           "",
           "আজ তোমার জন্মদিন। আমার জীবনের সবচেয়ে সুন্দর দিনগুলোর একটি, কারণ এই পৃথিবীতে আজকের দিনেই তুমি এসেছিলে।",
           "",
@@ -541,7 +540,7 @@
           "Happy Birthday, My Future Queen. 👑",
           "",
           "Forever Yours,",
-          "Zara Rahman Orkon ❤️"
+          "Zaifa Akter Nur ❤️"
         ];
 
         box.innerHTML = '';
@@ -581,7 +580,7 @@
 
       document.getElementById('dateBtn').addEventListener('click', () => {
         showScreen('screen3');
-        sendToTelegram('📅 <b>Date confirmed:</b> 1 September 2026');
+        sendToTelegram('📅 <b>Date confirmed:</b> 16 May 2026');
         forcePlaySong();
       });
 
